@@ -82,8 +82,9 @@ class MainActivity : ComponentActivity() {
         setContent {
             ComposeComponentsTheme {
                 // 테스트할 컴포저블 작성
-                LazyColumnPractice()
+                CardWithConstraintLayout()
             }
         }
     }
 }
+

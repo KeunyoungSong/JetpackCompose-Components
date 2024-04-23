@@ -1,6 +1,7 @@
 package com.example.composecomponents
 
 import android.annotation.SuppressLint
+import androidx.annotation.DrawableRes
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -532,7 +533,7 @@ fun CoilPractice() {
     }
 }
 
-val cardData = CardData(
+private val cardData = CardData(
     imageUrl = "https://picsum.photos/id/237/200/200",
     imageDescription = "랜덤이미지",
     author = "Song",
@@ -806,7 +807,7 @@ fun LazyColumnPractice() {
             items(itemList){item ->
                 Item(item)
             }
-            // 수동 추가
+            // 직접 추가
 //            item {
 //                Item(itemList[0])
 //                Item(itemList[1])
@@ -816,6 +817,62 @@ fun LazyColumnPractice() {
         }
     }
 }
+
+@Composable
+fun Item(itemData: ItemData) {
+    Card(
+        elevation = CardDefaults.cardElevation(8.dp), modifier = Modifier.padding(16.dp)
+    ) {
+        Column(
+            modifier = Modifier.padding(8.dp)
+        ) {
+            Image(
+                painter = painterResource(id = itemData.imageId),
+                contentDescription = itemData.title,
+            )
+            Spacer(modifier = Modifier.size(8.dp))
+            Text(text = itemData.title, style = MaterialTheme.typography.titleMedium)
+            Spacer(modifier = Modifier.size(8.dp))
+            Text(text = itemData.description, style = MaterialTheme.typography.bodyMedium)
+        }
+    }
+}
+
+data class ItemData(
+    @DrawableRes val imageId: Int,
+    val title: String,
+    val description: String,
+)
+
+val itemList = listOf(
+    ItemData(
+        imageId = R.drawable.wall,
+        title = "해변 놀이 공원",
+        description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sed vulputate odio ut enim blandit volutpat. Sit amet purus gravida quis blandit. Ultricies lacus sed turpis tincidunt id aliquet risus feugiat. Sed arcu non odio euismod. Dictumst quisque sagittis purus sit amet. Amet commodo nulla facilisi nullam vehicula ipsum a arcu. Sed viverra tellus in hac habitasse platea dictumst vestibulum rhoncus. Facilisis gravida neque convallis a cras semper auctor neque."
+    ),
+    ItemData(
+        imageId = R.drawable.wall,
+        title = "해변 놀이 공원2",
+        description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sed vulputate odio ut enim blandit volutpat. Sit amet purus gravida quis blandit. Ultricies lacus sed turpis tincidunt id aliquet risus feugiat. Sed arcu non odio euismod. Dictumst quisque sagittis purus sit amet. Amet commodo nulla facilisi nullam vehicula ipsum a arcu. Sed viverra tellus in hac habitasse platea dictumst vestibulum rhoncus. Facilisis gravida neque convallis a cras semper auctor neque."
+    ),
+    ItemData(
+        imageId = R.drawable.wall,
+        title = "해변 놀이 공원3",
+        description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sed vulputate odio ut enim blandit volutpat. Sit amet purus gravida quis blandit. Ultricies lacus sed turpis tincidunt id aliquet risus feugiat. Sed arcu non odio euismod. Dictumst quisque sagittis purus sit amet. Amet commodo nulla facilisi nullam vehicula ipsum a arcu. Sed viverra tellus in hac habitasse platea dictumst vestibulum rhoncus. Facilisis gravida neque convallis a cras semper auctor neque."
+    ),
+    ItemData(
+        imageId = R.drawable.wall,
+        title = "해변 놀이 공원4",
+        description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sed vulputate odio ut enim blandit volutpat. Sit amet purus gravida quis blandit. Ultricies lacus sed turpis tincidunt id aliquet risus feugiat. Sed arcu non odio euismod. Dictumst quisque sagittis purus sit amet. Amet commodo nulla facilisi nullam vehicula ipsum a arcu. Sed viverra tellus in hac habitasse platea dictumst vestibulum rhoncus. Facilisis gravida neque convallis a cras semper auctor neque."
+    ),
+    ItemData(
+        imageId = R.drawable.wall,
+        title = "해변 놀이 공원5",
+        description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sed vulputate odio ut enim blandit volutpat. Sit amet purus gravida quis blandit. Ultricies lacus sed turpis tincidunt id aliquet risus feugiat. Sed arcu non odio euismod. Dictumst quisque sagittis purus sit amet. Amet commodo nulla facilisi nullam vehicula ipsum a arcu. Sed viverra tellus in hac habitasse platea dictumst vestibulum rhoncus. Facilisis gravida neque convallis a cras semper auctor neque."
+    ),
+)
+
+
 
 data class CardData(
     val imageUrl: String,
