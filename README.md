@@ -257,3 +257,42 @@
                 - min, max
             - heightIn()
                 - min, max
+- 컴포넌트
+    - ConstraintLayout
+        - ConstraintLayoutCompose 는 컴포즈 버전과 별도로 관리중 따로 추가 필요
+        - 래퍼런스 만들어야함
+        - start 키워드는 start, end 이동만 가능하고 top, bottom 은 안된다.
+            - 수평은 수평끼리, 수직은 수직끼리 연결 가능
+        - 속성
+            - modifier
+                - Modifier
+                    - constraintAs(layoutRef){ 제약조건 }
+                        - start, end, top, bottom
+                        - centerTo()
+                        - centerVerticallyTo()
+                        - centerHorizontallyTo()
+                        - parent
+                            - start, end, top, bottom
+    - ConstraintSet
+        - 뷰 컴포넌트의 제약조건을 modifier 에 직접하지 않고 분리하기 위해 사용
+        - ConstraintLayout 에 적용하기 위해선 ConstraintLayout 의 constraintSet 속성에 ConstraintSet 을 연결해야 함
+            - 또한 각각의 view 컴포넌트들엔 ConstraintSet 에서 정의한 refId 들을 정확하게 기입해야 함
+        - description {}
+            - createRefFor(”id”)
+            - constrain(ref)
+                - 제약 조건
+    - Chain
+        - createVerticalChain()
+        - createHorizontalChain()
+            - elements
+                - refs 추가
+            - chainStyle
+                - ChainStyle
+                    - Packed
+                    - Spread
+                    - SpreadInside
+    - Barrier
+        - 지정된 여러 요소의 가장 바깥 영역을 참조하는 요소
+        - create[direction]Barrier()
+- 속성
+    - linkTo( anchor, margin, goneMargin )
