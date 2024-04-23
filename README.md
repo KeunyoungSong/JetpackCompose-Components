@@ -1,0 +1,259 @@
+- 공통
+    - 컴포저블 함수 내에서는 context 를 사용할 수 없다
+    - 컴포저블 함수는 대문자 시작
+- 외부 라이브러리
+    - coil
+        - 코틀린과 컴포즈와 잘 통합되어있다 최근 인기
+        - rememberPainter 를 이용해 Image 사용
+        - Coil 권장 사항인 AsyncImage 를 사용
+    
+- 컴포넌트
+    - Text()
+        - MainActivity 의 setContent 내 Theme 은 프로젝트 명에 의존한다
+        - 초기 코드 작성은 프리뷰에서 한다
+            - 프리뷰 함수명은 변경 가능
+        - 영역 내 Text 정렬 시 textAlign 속성 사용
+        - modifier 의 align 속성은 부모 영역 내에서 해당 컴포넌트 위치를 지정하기 위함
+        - textAlign 속성은  텍스트 영역 내 글자 배치를 위함
+        - 옵션
+            - text
+            - modifier
+                - Modifier
+                    - width()
+                    - size()
+                    - clickable {}
+                    - align()
+                        - Alignment
+                    - weight()
+            - color
+                - graphics.Color, HEX Color
+            - fontSize
+            - fontWeight
+            - fontFamily
+            - fontStyle
+            - letterSpacing
+            - maxLines
+            - textDecoration
+            - textAlign
+                - TextAlign
+                    - End
+    - Button(onClick){디자인요소}
+        - 버튼 하위에는 여러 디자인 요소를 넣을 수 있다
+        - content {} 스코프 내는 RowScope
+        - 배경을 변경하기 위해 modifier 를 사용하면 button 의 r 값 뒤편의 영역 색이 변한다. 버튼 색은 변하지 않음
+        - 버튼에 modifier 로 padding 을 주면 버튼 내 padding 이 아닌 마치 버튼에 margin 이 적용된 것 처럼 보인다
+        - 옵션
+            - onClick
+            - enabled
+            - border
+                - BorderStroke
+            - shape
+                - RoundedCornerShape
+                - CircleShape
+            - contentPadding
+                - PaddingValues
+            - colors
+                - ButtonDefaults.buttonColors()
+                    - containerColor
+                    - contentColor
+        - content {}
+            - 다른 컴포저블 배치
+    - Spacer()
+        - 여백을 주는 용도
+        - 옵션
+            - modifier
+                - size
+                    - dp
+                    - ButtonDefaults.IconSize
+    - Surface(){}
+        - 메테리얼 디자인의 기본적인 메타포
+        - 컬러 설정을 surface 로 하면 Content color 가 자동으로 설정
+        - 예로 content color 가 세팅되어있지 않다면 surface color 를 쓴 경우에는 onSurface 라는 색상으로 Content Color 가 세팅됨
+        - Background 는 onBackground 로 기본 설정됨
+        - 뒤로 터치이벤트를 전달하지 않는 특징이 있음
+        - Surface 는 기본적 UI 의 구축 기반
+        - 안드로이드 컴포즈는 margin 과 padding 만 있는게 아닌 padding 만 있다
+            - 예를 들어 버튼에 텍스트가 있는데 텍스트에 (일반적인)margin 이 필요하다고 한다면 그위 button 에 padding 을 지정해야 한다.
+                - 성능을 위함..일반적인 방식과 다름
+        - Border 은 영역 안 쪽으로 생김
+        - Color 만 설정하고 Content color 를 설정하지 않으면 컬러에 맞추어 적당한 content color 가 세팅됨
+        - color 옵션에서 Matiraltheme.colorScheme. 하위에서 색을 결정하면 배경화면과 배경화면 영역 내 콘텐츠의 색이 적당히 설정됨
+            - surface
+            - error
+            - primary
+        - 옵션
+            - modifier
+                - Modifier
+            - shadowElevation
+                - dp
+            - border
+                - BorderStroke()
+                    - width
+                    - color
+            - shape
+                - CircleShape
+        - content{}
+            
+            
+        - Responsible for
+            - Clipping
+            - Elevation
+            - Borders
+            - Background
+                - Colo
+    - Box(){}
+        - Box 에서는 Alignment 가 자유롭다(2차원 alignment 가능)
+            - Column, Row 는 1차원 alignment 가능
+                - 둘 중 어느걸 쓰느냐에 따라 alignment 방향이 결정된다
+        - 박스는 박스 자체를 만들거나 여러 컴포펀트를 중첩시키기 위해 사용한다
+        - modifier 로 사이즈를 설정하지 않으면 화면에 보이지 않는다
+        - 최상단 박스에는 matchParentSize() 크기 설정이 되지않는다
+            - 자식 박스에서는 가능하다
+        - Box 내 배치돠는 컴포넌트들은 중첩될 수 있는데 컴포저블 기준 마지막에 작성된 컴포넌트가 제일 위에 온다
+        - 옵션
+            - modifier
+                - Modifier
+                    - size
+        - content{}
+            - 다중 컴포넌트 배치 가능
+    - Row(){}
+        - 가로배치
+        - 가로 크기를 넣지 않고 컴포넌트를 넣으면 wrap_content 속성처럼 작동한다
+        - Row 의 속성 verticalAlignment 에 Alignment를 지정하면 일괄 정렬 됨
+            - 자식에 다시 설정하면 자식 설정이 우선됨
+        - 속성
+            - modifier
+            - verticalAlignment
+                - Alignment
+                    - CenterVertically
+            - horizontalArrangement
+                - Arrangement
+                    - Center
+                    - SpaceAround
+                        - #1##2##3#
+                        - 각 컴포넌트 별 좌우 간격 생기며 고르게 배치
+                    - SpaceBetween
+                        - 1##2##3
+                        - 시작과 끝 여백 없이 컴포넌트 사이 여백만 고려해 고르게 배치
+                    - SpaceEvenly
+                        - #1#2#3#
+                        - 시작과 끝 여백 고려하여 고르게 배치
+        - content {}
+            
+            
+    - Column(){}
+        - 속성
+            - modifier
+                - Modifier
+            - horizontalAlignment
+                - Alignment
+                    - End
+        - content{}
+    - Icon(){}
+        - 속성
+            - modifier
+                - Modifier
+                    - background()
+            - imageVector
+                - Icons
+                    - Filled
+                        - Add…
+            - contentDescription
+                - “”
+        - content {}
+    - BoxWithConstraints(){}
+        - 속성
+        - content{}
+    - Image()
+        - png, vector, bitmap 그리기 가능
+            - bitmap 은 context 필요
+        - 속성
+            - painter
+                - painterResource
+                    - id
+                        - R.drawable.[fileName]
+                - contentDescription
+                - imageVector
+                    - Icons.Filled.[fileName]
+    - Network Image(AsyncImage)
+        - 네트워크로 이미지를 가져올 땐 프리뷰가 동작하지 않음 에뮬레이터 사용필요
+        - Coil 을 사용해 이미지 로드 구현
+        - Image
+            - rememberImagePainter(link)
+        - AsyncImage
+            - model
+            - contentDescription
+            - contentScale
+                - ContentScale
+                    - Crop
+            - modifier
+                - size
+                - clip
+                    - CircleShape
+                    - RoundedCornerShape(dp)
+            - placeholder
+            - ColorPainter(Color)
+    - Card()
+        - 속성
+            - modifier
+            - elevation
+                - CardDefaults.cardElevation(dp)
+    - CheckBox
+        - 기본 동작이 checkbox 의 상태를 바꾸지 않는다. checked 상태를 변경해줘야함
+        - Checkbox 도 onCheckedChange 스코프 내에서 반전된 boolean 값을 주긴 한다. 하지만 여기선 상태를 직접 관리한다
+        - 컴포저블 함수는 리컴포저블이라는 다시 그리는 절차가 필요할 때만 ui 를 다시 그린다
+            - 한 번그려지기 시작한 것이 다시 그려질 수도 있다
+            - 여러 스레드에서 동시에 하나의 컴포저블을 상태를 계산할 수 있다
+            - 때문에 mutableStateOf() 밖에 remember 로 감싸주어야 한다
+        - 속성
+    - TextField
+        - 속성
+            - value
+            - onValueChange
+            - label
+    - TopAppBar
+        - 속성
+            - title
+                - { 구성 요소 컴포저블 }
+            - navigation
+                - { 구성 요소 컴포저블 }
+            - actions
+                - { 구성 요소 컴포저블 }
+    - SlotAPI
+        - 어떤 컴포넌트가 다른 컴포넌트를 내부에 감쌀 수 있게 하는 것을 Slot API 라고 한다
+            - Column, Row, TopAppBar 등등
+        - SlotAPI 구현 시 마지막 파라미터엔 함수가 전달되는데 이때 매개변수 선언 앞에 @Composable 애노테이션을 붙혀줘야 한다
+        - 함수 외부에서 content 가 존재하는  스코프의 기능을 사용하기 위해서 content 를 확장함수로 선언할 수도 있다
+    - Scaffold
+        - SlotAPI 를 확장한 것
+        - 빈 칸을 채워가며 개발할 수 있다
+        - 속성
+            - topBar
+                - {TopAppBar() }
+            - floatingActionButton
+                - { FloatingActionButton() }
+    - LazyColumn
+        - 필요할 때만 보여주겠다 컴포즈의 recycler view
+- 속성
+    - Modifier
+        - Modifier.align(Alignment.XXX) 에서 Center 는 사용되지 않고 가로, 세로 중 특정 방향에 대한 정보를 지정해야 한다. (CenterVertically, CenterHorizontally)
+        - Alignment 는 진행방향과 수직으로 이뤄짐
+        - Arrangement 는 진행방향으로 이뤄짐
+        - Alignment 는 속성 지정 시 수직, 수평 정보를 포함시켜야 하고
+        - Arrangement 는 Center 처럼 하나로 표기한다
+        - 자식에서 Modifier 의 widthIn, heightIn 을 통해 사이즈를 조절해도 여러 제약에 따라 정확히 지정한 크기가 되진 않는다
+            - 부모 크기에 종속된다
+            - 자식 크기에서 width, height 가 강제로 더 크게 지정되면 부모를 초과하는 만큼 잘린다
+            - 140으로 설정했을 때 140 보다 아주조금 크게 지정된다(갤럭시20)
+        - width 를 지정하면 withIn() 의 min, max 가 동일한 값으로 설정된다
+        - Modifier 는 companion object 로 선언된 것이 있다
+        - 속성
+            - fillMaxSize()
+            - width()
+            - height()
+            - size()
+            - matchParentSize()
+            - widthIn()
+                - min, max
+            - heightIn()
+                - min, max
