@@ -296,3 +296,4 @@
         - create[direction]Barrier()
 - 속성
     - linkTo( anchor, margin, goneMargin )
+    - width = Dimension.fillToConstraints
