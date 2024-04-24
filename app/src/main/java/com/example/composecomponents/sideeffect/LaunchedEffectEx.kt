@@ -1,4 +1,4 @@
-package com.example.composecomponents
+package com.example.composecomponents.sideeffect
 
 import android.util.Log
 import androidx.compose.foundation.layout.Box

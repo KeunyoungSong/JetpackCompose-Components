@@ -3,6 +3,7 @@ package com.example.composecomponents
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import com.example.composecomponents.sideeffect.DisposableEffectEx
 import com.example.composecomponents.ui.theme.ComposeComponentsTheme
 
 class MainActivity : ComponentActivity() {

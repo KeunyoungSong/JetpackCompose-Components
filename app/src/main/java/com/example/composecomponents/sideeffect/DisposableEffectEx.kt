@@ -1,4 +1,4 @@
-package com.example.composecomponents
+package com.example.composecomponents.sideeffect
 
 import android.content.Context
 import android.hardware.Sensor

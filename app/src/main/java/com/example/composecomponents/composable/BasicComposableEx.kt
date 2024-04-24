@@ -1,4 +1,4 @@
-package com.example.composecomponents
+package com.example.composecomponents.composable
 
 import android.annotation.SuppressLint
 import androidx.annotation.DrawableRes
@@ -70,6 +70,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import coil.compose.rememberImagePainter
+import com.example.composecomponents.R
 
 @Composable
 fun TextPractice(name: String) {
@@ -804,7 +805,7 @@ fun ScaffoldPractice() {
 fun LazyColumnPractice() {
     Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
         LazyColumn {
-            items(itemList){item ->
+            items(itemList){ item ->
                 Item(item)
             }
             // 직접 추가
