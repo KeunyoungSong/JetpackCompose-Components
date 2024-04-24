@@ -1,3 +1,15 @@
+# 학습 내용
+### JetpackCompose
+Version: (ComposeBom: 2024.04.00)
+
+## JetpackComposeUI 활용 
+Text, Button, Surface, Box, Row, Column, BoxWithConstraints, Image, AsyncImage(with Coil), Card, Checkbox, Textfield, TopAppBar, Slot API, Scaffold, LazyColumn, modifier, ConstraintLayout, ConstraintSet, Chain, Barrier
+
+## JetpackCompose SideEffect 활용 
+DisposableEffect, LaunchedEffect
+
+## Note
+
 - 공통
     - 컴포저블 함수 내에서는 context 를 사용할 수 없다
     - 컴포저블 함수는 대문자 시작
@@ -297,3 +309,66 @@
 - 속성
     - linkTo( anchor, margin, goneMargin )
     - width = Dimension.fillToConstraints
+ 
+- ConstraintLayout
+    - ConstraintLayoutCompose 는 컴포즈 버전과 별도로 관리중 따로 추가 필요
+    - 래퍼런스 만들어야함
+    - start 키워드는 start, end 이동만 가능하고 top, bottom 은 안된다.
+        - 수평은 수평끼리, 수직은 수직끼리 연결 가능
+    - 속성
+        - modifier
+            - Modifier
+                - constraintAs(layoutRef){ 제약조건 }
+                    - start, end, top, bottom
+                    - centerTo()
+                    - centerVerticallyTo()
+                    - centerHorizontallyTo()
+                    - parent
+                        - start, end, top, bottom
+- ConstraintSet
+    - 뷰 컴포넌트의 제약조건을 modifier 에 직접하지 않고 분리하기 위해 사용
+    - ConstraintLayout 에 적용하기 위해선 ConstraintLayout 의 constraintSet 속성에 ConstraintSet 을 연결해야 함
+        - 또한 각각의 view 컴포넌트들엔 ConstraintSet 에서 정의한 refId 들을 정확하게 기입해야 함
+    - description {}
+        - createRefFor(”id”)
+        - constrain(ref)
+            - 제약 조건
+- Chain
+    - createVerticalChain()
+    - createHorizontalChain()
+        - elements
+            - refs 추가
+        - chainStyle
+            - ChainStyle
+                - Packed
+                - Spread
+                - SpreadInside
+- Barrier
+    - 지정된 여러 요소의 가장 바깥 영역을 참조하는 요소
+    - create[direction]Barrier()
+- canvas
+    - 무조건 modifier 만들어 붙여줘야 함
+- Dialog
+    - onDismissRequest 는 외부 영역 클릭 시 수행되는 로직
+    - 속성
+        
+        onDismissRequest, confirmButton, dismissButton, title, text
+        
+- CustomDialog
+    - onDismissRequest 는 외부 영역 클릭 시 수행되는 로직
+    - 속성
+        
+        onDismissRequest
+        
+- DropDownMenu
+    
+    
+- State 와 Hoisting
+    
+    
+- remember
+    - Remember 는 컴포저블 안에서 상태를 가지고 있게 하기 위해서 cache 를 사용
+        - 하지만 화면회전과 같은 configuration change 에는 cache 가 사라짐
+        - 이것을 방지하기 위해 rememberSavable 이 있음
+            - 하지만 여기에 너무 많은 정보를 저장하는 것은 좋지 않음
+            - 내부적으로 rememberSavable 는 remember 를 호출함
