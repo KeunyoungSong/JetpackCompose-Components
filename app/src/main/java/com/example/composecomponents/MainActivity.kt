@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.composecomponents.composable.theme.ThemeEx
 import com.example.composecomponents.context.CompositionLocalProviderEx
+import com.example.composecomponents.navigation.MyNav
 import com.example.composecomponents.sideeffect.DisposableEffectEx
 import com.example.composecomponents.ui.theme.ComposeComponentsTheme
 
@@ -26,7 +27,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.wrapContentWidth(),
                     color = MaterialTheme.colorScheme.surface
                 ) {
-                    ThemeEx()
+                    MyNav()
                 }
             }
         }
