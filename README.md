@@ -1,6 +1,6 @@
-# 학습 내용
-### JetpackCompose
-Version: (ComposeBom: 2024.04.00)
+# Jetpack Compose 실습
+
+ComposeBom version: 2024.04.00
 
 ## JetpackComposeUI 활용 
 Text, Button, Surface, Box, Row, Column, BoxWithConstraints, Image, AsyncImage(with Coil), Card, Checkbox, Textfield, TopAppBar, Slot API, Scaffold, LazyColumn, modifier, ConstraintLayout, ConstraintSet, Chain, Barrier
