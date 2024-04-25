@@ -1,4 +1,4 @@
-package com.example.composecomponents.composable
+package com.example.composecomponents.composable.menu
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.Button

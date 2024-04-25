@@ -1,4 +1,4 @@
-package com.example.composecomponents.composable
+package com.example.composecomponents.composable.layout
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -20,6 +20,7 @@ import androidx.constraintlayout.compose.ChainStyle
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
 import coil.compose.AsyncImage
+import com.example.composecomponents.composable.common.CardData
 
 private val cardData = CardData(
     imageUrl = "https://picsum.photos/id/237/200/200",

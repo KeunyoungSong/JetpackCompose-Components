@@ -1,4 +1,4 @@
-package com.example.composecomponents.composable
+package com.example.composecomponents.composable.common
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row

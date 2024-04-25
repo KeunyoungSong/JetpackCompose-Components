@@ -1,4 +1,4 @@
-package com.example.composecomponents.composable
+package com.example.composecomponents.composable.state
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding

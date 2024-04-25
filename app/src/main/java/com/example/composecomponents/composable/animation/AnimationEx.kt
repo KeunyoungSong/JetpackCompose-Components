@@ -1,4 +1,4 @@
-package com.example.composecomponents.composable
+package com.example.composecomponents.composable.animation
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.Crossfade

@@ -1,4 +1,4 @@
-package com.example.composecomponents.composable
+package com.example.composecomponents.composable.common
 
 import android.annotation.SuppressLint
 import androidx.annotation.DrawableRes

@@ -66,5 +66,5 @@ dependencies {
     implementation(libs.coil)
     implementation(libs.coil.compose)
     implementation(libs.androidx.compose.constraint.layout)
-
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
 }
